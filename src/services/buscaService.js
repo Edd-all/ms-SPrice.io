@@ -10,11 +10,13 @@ export async function executarBusca() {
   const resultadoDaPesquisa = await mercadoLivreScraper(page, itemDaPesquisa)
 
   const listaProdutos = resultadoDaPesquisa.map(item =>
-    new Produto(item.nome, item.preco).toString()
+    new Produto(item.nome, item.preco)
   )
 
   console.log("Produtos encontrados:")
-  console.log(listaProdutos)
+  listaProdutos.forEach(produto => {
+    console.log(produto.toString())
+  })
 
   await browser.close()
 
