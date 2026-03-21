@@ -1,6 +1,6 @@
-import { executarBusca } from "./services/buscaService.js"
+import { buscaMercadoLivreService } from "./services/buscaMercadoLivreService.js"
 
 async function main() {
-  await executarBusca()
+  await buscaMercadoLivreService()
 }
 main()

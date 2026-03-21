@@ -2,19 +2,23 @@ import { iniciarNavegador } from "../config/navegador.js"
 import { Produto } from "../model/produto.js"
 import { mercadoLivreScraper } from "../scrapers/mercadoLivreScraper.js"
 
-export async function executarBusca() {
+export async function buscaMercadoLivreService() {
 
   const { browser, page } = await iniciarNavegador()
-  const itemDaPesquisa = 'carro'
+  const nomeItemDaPesquisa = 'carro'
+  const preceItemDaPesquisa = 200
 
-  const resultadoDaPesquisa = await mercadoLivreScraper(page, itemDaPesquisa)
+  const resultadoDaPesquisa = await mercadoLivreScraper(page, nomeItemDaPesquisa)
 
   const listaProdutos = resultadoDaPesquisa.map(item =>
     new Produto(item.nome, item.preco)
   )
+  const produtosFiltrados = listaProdutos.filter(produto => 
+    produto.preco <= preceItemDaPesquisa
+  )
 
   console.log("Produtos encontrados:")
-  listaProdutos.forEach(produto => {
+  produtosFiltrados.forEach(produto => {
     console.log(produto.toString())
   })
 
