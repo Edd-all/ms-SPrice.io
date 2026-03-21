@@ -25,5 +25,5 @@ export async function buscaMercadoLivreService() {
 
   await browser.close()
 
-  return listaProdutos
+  return produtosFiltrados
 }
