@@ -1,10 +1,12 @@
 export class Produto {
-  constructor(nome, preco) {
+  constructor(nome, preco, link) {
     this.nome = nome
     this.preco = preco
+    this.link = link
   }
 
+  //apenas para print
   toString() {
-    return `${this.nome} - R$ ${this.preco}`
+    return `Nome: ${this.nome} \nPreço: R$ ${this.preco} \nLink: ${this.link} \n\n`
   }
 }

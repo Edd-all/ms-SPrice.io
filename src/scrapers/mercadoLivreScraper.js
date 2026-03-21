@@ -15,7 +15,8 @@ export async function mercadoLivreScraper(page, itemDaPesquisa) {
     items.map(item => {
       const nome = item.querySelector('h3.poly-component__title-wrapper')?.innerText
       const preco = item.querySelector('span.andes-money-amount__fraction')?.innerText
-      return { nome, preco}
+      const link = item.querySelector('a.poly-component__title')?.href
+      return { nome, preco, link }
     })
   )
 

@@ -6,17 +6,18 @@ export async function buscaMercadoLivreService() {
 
   const { browser, page } = await iniciarNavegador()
   const nomeItemDaPesquisa = 'carro'
-  const preceItemDaPesquisa = 200
+  const preceItemDaPesquisa = 50
 
   const resultadoDaPesquisa = await mercadoLivreScraper(page, nomeItemDaPesquisa)
 
   const listaProdutos = resultadoDaPesquisa.map(item =>
-    new Produto(item.nome, item.preco)
+    new Produto(item.nome, item.preco, item.link)
   )
   const produtosFiltrados = listaProdutos.filter(produto => 
     produto.preco <= preceItemDaPesquisa
   )
 
+  //apenas para print
   console.log("Produtos encontrados:")
   produtosFiltrados.forEach(produto => {
     console.log(produto.toString())
