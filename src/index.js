@@ -1,6 +1,14 @@
-import { buscaMercadoLivreService } from "./services/buscaMercadoLivreService.js"
+import express from 'express'
+import cors from 'cors'
+import rotas from './routes/produtoRoutes.js'
 
-async function main() {
-  await buscaMercadoLivreService()
-}
-main()
+const app = express()
+const PORT = 3000
+
+app.use(cors())
+app.use(express.json())
+app.use(rotas)
+
+app.listen(PORT, () => {
+  console.log(`✅ API rodando em http://localhost:${PORT}`)
+})

@@ -11,6 +11,8 @@ export async function mercadoLivreScraper(page, itemDaPesquisa) {
     page.waitForNavigation()
   ])
 
+  await page.waitForSelector('li.ui-search-layout__item', { timeout: 15000 })
+
   const produtos = await page.$$eval('li.ui-search-layout__item', items =>
     items.map(item => {
       const nome = item.querySelector('h3.poly-component__title-wrapper')?.innerText
