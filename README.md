@@ -1,4 +1,4 @@
-
+O MS-Sprice.io é um micro serviço para coleta de informações de produtos de várias lojas online que tem o objetivo de filtrar e compilar produtos pelo preço desejado
 
 
 Tecnologias: Express, puppeteer
