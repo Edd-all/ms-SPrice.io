@@ -1,6 +1,10 @@
-export async function mercadoLivreScraper(page, itemDaPesquisa) {
+import { iniciarNavegador } from "../config/navegador.js"
+
+export async function mercadoLivreScraper(itemDaPesquisa) {
+  const { browser, page } = await iniciarNavegador()
 
   const barraDePesquisa = 'input[class="nav-search-input"]'
+  const layoutDoItem = 'li.ui-search-layout__item'
 
   await page.goto("https://www.mercadolivre.com.br/")
   await page.waitForSelector(barraDePesquisa)
@@ -11,9 +15,9 @@ export async function mercadoLivreScraper(page, itemDaPesquisa) {
     page.waitForNavigation()
   ])
 
-  await page.waitForSelector('li.ui-search-layout__item', { timeout: 15000 })
+  await page.waitForSelector(layoutDoItem, { timeout: 15000 })
 
-  const produtos = await page.$$eval('li.ui-search-layout__item', items =>
+  const produtos = await page.$$eval(layoutDoItem, items =>
     items.map(item => {
       const nome = item.querySelector('h3.poly-component__title-wrapper')?.innerText
       const preco = item.querySelector('span.andes-money-amount__fraction')?.innerText
@@ -21,6 +25,8 @@ export async function mercadoLivreScraper(page, itemDaPesquisa) {
       return { nome, preco, link }
     })
   )
+
+  await browser.close()
 
   return produtos
 }

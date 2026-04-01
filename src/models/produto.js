@@ -1,9 +1,6 @@
 export class Produto {
   constructor(nome, preco, link, origem) {
-    this.nome = nome
-    this.preco = preco
-    this.link = link
-    this.origem = origem
+    Object.assign(this, { nome, preco, link, origem })
   }
 
   //apenas para print

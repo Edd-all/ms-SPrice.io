@@ -1,8 +1,6 @@
 export class Usuario {
   constructor(nome, email, senha) {
-    this.nome = nome
-    this.email = email
-    this.senha = senha
+    Object.assign(this, { nome, email, senha })
   }
 
   //apenas para print

@@ -1,12 +1,9 @@
-import { iniciarNavegador } from "../config/navegador.js"
 import { Produto } from "../models/produto.js"
 import { mercadoLivreScraper } from "../scrapers/mercadoLivreScraper.js"
 import { Origem } from "../enums/origem.js"
 
-export async function buscaMercadoLivreService(nomeItem, precoMaximo) {
-  const { browser, page } = await iniciarNavegador()
-
-  const resultadoDaPesquisa = await mercadoLivreScraper(page, nomeItem)
+export async function mercadoLivreService(nomeItem, precoMaximo) {
+  const resultadoDaPesquisa = await mercadoLivreScraper(nomeItem)
 
   const listaProdutos = resultadoDaPesquisa.map(item =>
     new Produto(item.nome, item.preco, item.link, item.origem = Origem.MERCADO_LIVRE)
@@ -20,8 +17,6 @@ export async function buscaMercadoLivreService(nomeItem, precoMaximo) {
   produtosFiltrados.forEach(produto => {
     console.log(produto.toString())
   })
-
-  await browser.close()
 
   return produtosFiltrados
 }
