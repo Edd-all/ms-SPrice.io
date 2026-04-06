@@ -7,5 +7,5 @@ rodar projeto: npm start
 rodar com debug(pelo terminal de debug do vscode): node src/index.js
 
 
-Requisição por link: http://localhost:3000/produtos?item=carro&precoMax=50
+Requisição por link: http://localhost:3000/produtos?item=carro&precoMax=500
 Requisição por curl no cmd: curl "http://localhost:3000/produtos?item=notebook&precoMax=100"

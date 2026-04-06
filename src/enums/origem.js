@@ -1,3 +1,4 @@
 export const Origem = Object.freeze({
-  MERCADO_LIVRE: 'Mercado Livre'
+  MERCADO_LIVRE: 'Mercado Livre',
+  AMAZON: 'Amazon'
 })
