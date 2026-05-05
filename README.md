@@ -9,9 +9,9 @@ rodar com debug(pelo terminal de debug do vscode): node src/index.js
 
 Exemplos de requisições:
 
-- Requisição por link 
+- Requisição por link: 
 http://localhost:3000/produtos?item=carro&precoMax=500
 
 
-- Requisição por curl (CMD) 
-curl "http://localhost:3000/produtos?item=notebook&precoMax=100"
+- Requisição por curl (CMD): 
+curl http://localhost:3000/produtos?item=notebook&precoMax=100
