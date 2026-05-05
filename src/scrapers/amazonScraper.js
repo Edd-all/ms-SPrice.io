@@ -6,9 +6,9 @@ export async function amazonScraper(itemDaPesquisa) {
   const barraDePesquisa = 'input#twotabsearchtextbox'
   const layoutDoItem = '[data-component-type="s-search-result"]'
   const seletores = {
-    nome: 'h2.a-size-mini span',
+    nome: 'h2 span',
     preco: 'span.a-price span.a-offscreen',
-    link: 'h2.a-size-mini a.a-link-normal'
+    link: 'a.a-link-normal.s-no-outline'
   }
 
   await page.goto("https://www.amazon.com.br/")
@@ -28,7 +28,11 @@ export async function amazonScraper(itemDaPesquisa) {
     items.map(item => ({
       nome: item.querySelector(seletores.nome)?.innerText?.trim(),
       preco: item.querySelector(seletores.preco)?.innerText?.trim(),
-      link: item.querySelector(seletores.link)?.href ?? null
+      link: (() => {
+        const href = item.querySelector(seletores.link)?.getAttribute('href')
+        if (!href) return null
+        return href.startsWith('http') ? href : `https://www.amazon.com.br${href}`
+      })()
     })).filter(p => p.nome),
     seletores
   )

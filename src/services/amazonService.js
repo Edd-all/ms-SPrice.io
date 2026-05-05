@@ -6,9 +6,9 @@ function parsearPreco(precoStr) {
   if (!precoStr) return null
 
   const apenasNumeros = precoStr
-    .replace(/[R$\s]/g, "")  // remove "R$" e espaços
-    .replace(/\./g, "")       // remove separador de milhar
-    .replace(",", ".")        // troca vírgula decimal por ponto
+    .replace(/[R$\s]/g, "")  
+    .replace(/\./g, "")       
+    .replace(",", ".")        
 
   const valor = parseFloat(apenasNumeros)
   return isNaN(valor) ? null : valor
