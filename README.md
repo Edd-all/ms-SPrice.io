@@ -1,4 +1,4 @@
-````markdown
+
 # 🛒 MS-Sprice.io
 
 **MS-Sprice.io** é um microsserviço responsável pela coleta de informações de produtos em lojas online.
@@ -74,4 +74,4 @@ curl "http://localhost:3000/produtos?item=notebook&precoMax=100"
 - Criar arquitetura de plugins para novos scrapers.
 - Implementar cache para reduzir consultas repetidas.
 - Disponibilizar documentação completa da API.
-````
+
